@@ -1,0 +1,20 @@
+{
+    "format_version": 1,
+    "imports": [
+        {
+            "target_table": "gh.hdb.model::Param1",
+            "source_data": {
+                "data_type": "CSV",
+                "file_name": "gh.hdb.data::Param1.csv",
+                "has_header": true
+            },
+            "import_settings": {
+                "import_columns": [
+                    "idParam",
+					"valor",
+					"valor2"
+                ]
+            }
+        }
+    ]
+}

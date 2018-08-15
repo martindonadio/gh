@@ -1,0 +1,52 @@
+ID: gh
+_schema-version: '2.1'
+version: 0.0.1
+modules:
+  - name: hdb
+    type: hdb
+    path: hdb
+    requires:
+      - name: hdi_hdb
+  - name: njs
+    type: nodejs
+    path: njs
+    provides:
+      - name: njs_api
+        properties:
+          url: '${default-url}'
+    requires:
+      - name: hdi_hdb
+  - name: web
+    type: html5
+    path: web
+    parameters:
+      disk-quota: 256M
+      memory: 256M
+    requires:
+      - name: uaa_gh
+      - name: dest_gh
+      - name: njs_api
+        group: destinations
+        properties:
+          name: odata-backend
+          url: '~{url}'
+    build-parameters:
+      builder: grunt
+resources:
+  - name: hdi_hdb
+    parameters:
+      config:
+        schema: GH
+    properties:
+      hdi-container-name: '${service-name}'
+    type: com.sap.xs.hdi-container
+  - name: uaa_gh
+    parameters:
+      path: ./xs-security.json
+      service-plan: application
+    type: com.sap.xs.uaa
+  - name: dest_gh
+    parameters:
+      service-plan: lite
+      service: destination
+    type: org.cloudfoundry.managed-service

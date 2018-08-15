@@ -1,0 +1,5 @@
+service {
+	"gh.hdb.model::Param1" as "P1";
+	
+	"gh.hdb.model::Param2" as "P2" keys generate local "GenID" ;
+}

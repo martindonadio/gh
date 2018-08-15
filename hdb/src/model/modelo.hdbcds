@@ -1,0 +1,14 @@
+namespace gh.hdb.model;
+
+/*@@layout{"layoutInfo":{"x":-372,"y":-70.5}}*/
+entity Param1 {
+    key idParam : String(10);
+        valor   : String(10);
+        valor2  : Integer;
+};
+
+/*@@layout{"layoutInfo":{"x":-79,"y":-71.5}}*/
+entity Param2 {
+    ParametroA : String(10);
+    BotonB     : String(10);
+};
